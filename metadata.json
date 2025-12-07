@@ -1,0 +1,5 @@
+{
+  "name": "EduCore Management",
+  "description": "A comprehensive Academic Management System for Admins, Teachers, and Students featuring grade management, GPA calculation, and course assignments.",
+  "requestFramePermissions": []
+}
