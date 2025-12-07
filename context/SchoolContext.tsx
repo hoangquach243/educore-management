@@ -42,9 +42,6 @@ interface SchoolContextType {
   updateScores: (recordId: string, scores: GradeRecord['scores']) => void;
   submitGrades: (classId: string) => void;
   toggleGradeLock: (classId: string, locked: boolean) => void; // Admin Action
-  
-  // System Actions
-  resetSystem: () => void;
 }
 
 const SchoolContext = createContext<SchoolContextType | undefined>(undefined);
@@ -337,13 +334,6 @@ export const SchoolProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     }
   };
 
-  const resetSystem = () => {
-    if (confirm("Reset all data to factory defaults? This cannot be undone.")) {
-      localStorage.clear();
-      window.location.reload();
-    }
-  };
-
   // Transform functions
   function transformUser(row: any): User {
     return {
@@ -399,7 +389,7 @@ export const SchoolProvider: React.FC<{ children: React.ReactNode }> = ({ childr
       initializeSemester, addCourse, deleteCourse, addClass, deleteClass,
       assignTeacher, updateAssignment, deleteAssignment,
       enrollStudent, removeStudent,
-      updateGradeConfig, updateScores, submitGrades, toggleGradeLock, resetSystem
+      updateGradeConfig, updateScores, submitGrades, toggleGradeLock
     }}>
       {children}
     </SchoolContext.Provider>

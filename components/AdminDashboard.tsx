@@ -2,16 +2,15 @@
 import React, { useState, useMemo } from 'react';
 import { useSchool } from '../context/SchoolContext';
 import { User, UserRole, TeachingAssignment, Course, ClassSection } from '../types';
-import { Users, BookOpen, Plus, Trash2, Edit2, CheckCircle, Ban, GraduationCap, RotateCcw, Search, Filter, Save, X, ChevronRight, Library, ArrowRight, Calendar, ArrowLeft, Lock, Unlock, AlertCircle } from 'lucide-react';
+import { Users, BookOpen, Plus, Trash2, Edit2, CheckCircle, Ban, GraduationCap, Search, Filter, Save, X, ChevronRight, Library, ArrowRight, Calendar, ArrowLeft, Lock, Unlock, AlertCircle } from 'lucide-react';
 
 export const AdminDashboard: React.FC = () => {
-  const { 
-    users, courses, classes, assignments, grades, 
-    addUser, updateUser, deleteUser, 
+  const {
+    users, courses, classes, assignments, grades,
+    addUser, updateUser, deleteUser,
     initializeSemester, addCourse, deleteCourse, addClass, deleteClass,
     assignTeacher, updateAssignment, deleteAssignment,
-    submitGrades, toggleGradeLock,
-    resetSystem 
+    submitGrades, toggleGradeLock
   } = useSchool();
 
   const [activeTab, setActiveTab] = useState<'users' | 'academics' | 'assignments' | 'grades'>('users');
@@ -278,17 +277,11 @@ export const AdminDashboard: React.FC = () => {
 
   return (
     <div className="space-y-6">
-      <header className="mb-8 flex justify-between items-start">
+      <header className="mb-8">
         <div>
           <h2 className="text-3xl font-bold text-gray-800">Admin Dashboard</h2>
           <p className="text-gray-500">System configuration and data management.</p>
         </div>
-        <button 
-          onClick={resetSystem}
-          className="flex items-center gap-2 text-red-600 hover:bg-red-50 px-3 py-2 rounded-lg text-sm transition"
-        >
-            <RotateCcw size={14} /> Reset System Data
-        </button>
       </header>
 
       {/* Tabs */}
