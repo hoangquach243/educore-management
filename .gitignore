@@ -33,3 +33,10 @@ dist-ssr
 
 # Server node_modules
 server/node_modules
+
+# Claude Code
+.claude/
+
+# Documentation
+*.md
+!README.md
