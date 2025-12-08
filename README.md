@@ -1,4 +1,4 @@
-Link: https://final-educore-management-1kypitgzb-thienzans-projects.vercel.app/
+Link: https://final-educore-management.vercel.app/
 
 # EduCore Management System
 
