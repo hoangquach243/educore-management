@@ -1,3 +1,5 @@
+Link: https://final-educore-management-1kypitgzb-thienzans-projects.vercel.app/
+
 # EduCore Management System
 
 Hệ thống quản lý học tập với tích hợp MySQL database qua XAMPP.
