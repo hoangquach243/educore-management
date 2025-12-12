@@ -140,18 +140,33 @@ export const SchoolProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   
   const updateUser = async (originalId: string, updatedUser: User) => {
     try {
-      const updated = await api.usersAPI.update(originalId, updatedUser);
+
+      const payload = {
+          ...updatedUser,
+          is_active: updatedUser.isActive ? 1 : 0 
+      };
+
+      const updated = await api.usersAPI.update(originalId, payload);
+      
+
       const transformed = transformUser(updated);
+
+    
       setUsers(prev => prev.map(u => u.id === originalId ? transformed : u));
+
+ 
       if (currentUser && currentUser.id === originalId) {
         setCurrentUser(transformed);
       }
-      await loadAllData(); // Reload to sync foreign keys
+      
+    
+      
     } catch (error: any) {
+      console.error("Update failed:", error);
       alert(error.message || 'Không thể cập nhật người dùng');
       throw error;
     }
-  };
+};
 
   const updatePassword = async (userId: string, newPass: string) => {
     try {
@@ -335,18 +350,18 @@ export const SchoolProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   };
 
   // Transform functions
-  function transformUser(row: any): User {
+ function transformUser(row: any): User {
     return {
       id: row.id,
       name: row.name,
       email: row.email,
-      role: row.role,
-      isActive: row.is_active === 1 || row.is_active === true,
+      role: row.role,   
+      isActive: row.is_active === 1 || row.is_active === '1' || row.is_active === true,
       phone: row.phone,
       address: row.address,
       personalEmail: row.personal_email
     };
-  }
+}
 
   function transformGradeRecord(row: any): GradeRecord {
     return {
